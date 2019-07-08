@@ -1,5 +1,6 @@
 import React from "react";
 import "./RecipeCard.css";
+import store, { DELETE_RECIPE } from './../../store.js'
 
 let RecipeCard = props => {
   const {
@@ -10,12 +11,17 @@ let RecipeCard = props => {
     ingredients,
     instructions
   } = props;
+
   const ingredientsDisplay = ingredients.map((ingredient, i) => {
     return <li key={i}>{ingredient}</li>;
   });
+
   const instructionsDisplay = instructions.map((instruction, i) => {
     return <li key={i}>{instruction}</li>;
   });
+
+  const reduxState = store.getState()
+
   return (
     <div className="RecipeCard">
       <div className="title_container">
